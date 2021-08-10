@@ -55,7 +55,7 @@ class Artist(models.Model):
 
     name = models.CharField(max_length=255, verbose_name='Исполнитель')
     genre = models.ForeignKey(Genre, verbose_name='Жанр', on_delete=models.CASCADE)
-    members = models.ManyToManyField(Member, verbose_name='Участник', on_delete=models.CASCADE)
+    members = models.ManyToManyField(Member, verbose_name='Участник')
     image = models.ImageField(upload_to=upload_function, null=True, blank=True)
     slug = models.SlugField()
 
@@ -185,7 +185,7 @@ class Order(models.Model):
 class Customer(models.Model):
     """ Покупатель """
 
-    user = models.OneToOneField(settings.AUTH_MODEL_USER, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь', on_delete=models.CASCADE)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона')
     address = models.TextField(null=True, blank=True, verbose_name='Адрес')
     is_active = models.BooleanField(default=True, verbose_name='Активность пользователя')
