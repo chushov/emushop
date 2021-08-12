@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.utils import timezone
+from django.utils.safestring import mark_safe
 
 from utils import upload_function
 
@@ -228,6 +229,9 @@ class ImageGallery(models.Model):
 
     def __str__(self):
         return f"Изображение для {self.content_object}"
+
+    def image_url(self):
+        return mark_safe(f'<img src="{self.image_url}" width="auto" height="100px>"')
 
     class Meta:
         verbose_name = 'Галерея изображений'
