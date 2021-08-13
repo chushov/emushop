@@ -231,7 +231,7 @@ class ImageGallery(models.Model):
         return f"Изображение для {self.content_object}"
 
     def image_url(self):
-        return mark_safe(f'<img src="{self.image_url}" width="auto" height="100px>"')
+        return mark_safe(f'<img src="{self.image_url}" width="auto" height="100px">"')
 
     class Meta:
         verbose_name = 'Галерея изображений'
