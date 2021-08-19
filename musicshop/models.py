@@ -10,7 +10,7 @@ from utils import upload_function
 
 
 class MediaType(models.Model):
-    """ Медиа носитель"""
+    """ Тип носителя"""
 
     name = models.CharField(max_length=100, verbose_name='Тип носителя')
 
@@ -19,7 +19,7 @@ class MediaType(models.Model):
 
     class Meta:
         verbose_name = 'Носитель'
-        verbose_name_plural = 'Носитель'
+        verbose_name_plural = 'Носители'
 
 
 class Member(models.Model):
