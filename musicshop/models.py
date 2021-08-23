@@ -173,7 +173,7 @@ class Order(models.Model):
     buying_type = models.CharField(max_length=100, verbose_name='Тип заказа', choices=BUYING_TYPE_CHOICES)
     comment = models.TextField(verbose_name='Комментарий к заказу', null=True, blank=True)
     created_at = models.DateField(verbose_name='Дата создания заказа', auto_now=True)
-    order_date = models.DateField(verbose_name='Дата  получения заказа', default=timezone.now)
+    order_date = models.DateField(verbose_name='Дата получения заказа', default=timezone.now)
 
     def __str__(self):
         return str(self.id)
@@ -189,7 +189,7 @@ class Customer(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь', on_delete=models.CASCADE)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона')
     address = models.TextField(null=True, blank=True, verbose_name='Адрес')
-    is_active = models.BooleanField(default=True, verbose_name='Активность пользователя')
+    is_active = models.BooleanField(default=True, verbose_name='Статус активности')
     customer_orders = models.ManyToManyField(
         Order, blank=True, verbose_name='Заказы покупателя', related_name='related_customer'
     )
