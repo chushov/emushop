@@ -113,7 +113,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 # Надо бы разобраться с выводом статики (!!!)
-<<<<<<< HEAD
 
 # STATIC_URL = '/static/'
 # STATIC_ROOT = BASE_DIR / 'static'
@@ -124,9 +123,6 @@ USE_TZ = True
 # STATICFILES_DIRS = (
 #     (BASE_DIR / 'static_dev'),
 # )
-
-=======
->>>>>>> 086864218c0babaab1eb87342d6b7e1d4d019be6
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
