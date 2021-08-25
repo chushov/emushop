@@ -1,9 +1,13 @@
-# emushop
-Простой цифровой музыкальный магазин на Django.
+# Простой магазин на Django
 
 В этом проекте я тренируюсь создавать модели, вьюхи и выводить данные в шаблон.
 
-front: html, css, javascript
-back: django, python3, gunicorn
-
 ---
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
