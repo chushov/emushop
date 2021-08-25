@@ -1,17 +1,95 @@
 {% extends 'base.html' %}
-
-
+{% load static %}
 {% block content %}
 
-<div class="row" style="margin-bottom:20px;margin-top:160px;">
+<style>
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.label-notification {
+    color:grey;
+}
+</style>
+
+<div class="row">
     <div class="col-md-6 offset-md-3">
-        <h3 class="text-center">Регистрация</h3>
-        <hr>
+        <main class="form-signin">
         <form action="{% url 'registration' %}" method="POST">
-            {% csrf token %}
-            {{ form }}
-            <input type="submit" class="btn btn-success btn-block" value="Зарегистрироваться">
+            <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <input type="text" name="username" id="floatingInput id_username" class="form-control" placeholder="Логин" required autofocus>
+                <label for="floatingInput id_username">Логин</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" name="password" id="id_password floatingInput" class="form-control" placeholder="Пароль" required>
+                <label for="id_password floatingInput">Пароль</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" name="confirm_password" id="id_confirm_password floatingInput" class="form-control" placeholder="Подтвердите пароль" required>
+                <label for="id_confirm_password floatingInput">Подтвердите пароль</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="first_name" id="id_first_name floatingInput" class="form-control" placeholder="Имя" required>
+                <label for="id_first_name floatingInput">Имя</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="last_name" id="floatingInput id_last_name" class="form-control" placeholder="Фамилия" required>
+                <label for="floatingInput id_last_name">Фамилия</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="address" id="floatingInput id_address" class="form-control" placeholder="Адрес" required>
+                <label for="floatingInput id_address">Адрес</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="phone" id="floatingInput id_phone" class="form-control" placeholder="Телефон, +7 999 999 99 99" required>
+                <label for="floatingInput id_phone">Телефон</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" name="email" id="floatingInput id_email" class="form-control" placeholder="Емэйл, mail@gmail.com" required>
+                <label for="floatingInput id_email">Емэйл</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label class="label-notification">Обязательно проверьте введенные данные. Это важно для доставки.</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit" value="Войти">Зарегистрироваться</button>
+
         </form>
+        </main>
     </div>
 </div>
 

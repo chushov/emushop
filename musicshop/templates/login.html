@@ -1,17 +1,60 @@
 {% extends 'base.html' %}
-
-
+{% load static %}
 {% block content %}
 
-<div class="row" style="margin-bottom:20px;margin-top:160px;">
+<style>
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+
+<div class="row">
     <div class="col-md-6 offset-md-3">
-        <h3 class="text-center">Авторизация</h3>
-        <hr>
+        <main class="form-signin">
         <form action="{% url 'login' %}" method="POST">
-            {% csrf token %}
-            {{ form }}
-            <input type="submit" class="btn btn-success btn-block" value="Войти">
+            <h1 class="h3 mb-3 font-weight-normal">Вход</h1>
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <input type="text" name="username" id="floatingInput id_username" class="form-control" placeholder="Логин" required autofocus>
+                <label for="floatingInput id_username">Логин</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" name="password" id="floatingInput id_password" class="form-control" placeholder="Пароль" required>
+                <label for="floatingInput id_password">Пароль</label>
+            </div>
+
+            <div class="checkbox mb-3">
+            <label>
+            <input type="checkbox" value="remember-me">&nbsp;Запомнить
+            </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" value="Войти">Вход</button>
         </form>
+        </main>
     </div>
 </div>
 
