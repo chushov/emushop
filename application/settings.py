@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import random
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'musicshop',
-    'social_auth',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +61,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_auth.context_processors.social_auth_by_name_backends',
             ],
         },
     },
@@ -123,50 +120,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static_dev")]
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-# Facebook Auth
-
-FACEBOOK_APP_ID = '2600076826965827'
-FACEBOOK_API_SECRET = '56dad1932d005880e6bb96489d1a86b9'
-
-AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.facebook.FacebookBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-# Если имя не удалось получить, то можно его сгенерировать
-SOCIAL_AUTH_DEFAULT_USERNAME = lambda: random.choice(['Darth_Vader', 'Obi-Wan_Kenobi', 'R2-D2', 'C-3PO', 'Yoda'])
-# Разрешаем создавать пользователей через social_auth
-SOCIAL_AUTH_CREATE_USERS = True
-
-# Перечислим pipeline, которые последовательно буду обрабатывать респонс
-SOCIAL_AUTH_PIPELINE = (
-    # Получает по backend и uid инстансы social_user и user
-    'social_auth.backends.pipeline.social.social_auth_user',
-    # Получает по user.email инстанс пользователя и заменяет собой тот, который получили выше.
-    # Кстати, email выдает только Facebook и GitHub, а Vkontakte и Twitter не выдают
-    'social_auth.backends.pipeline.associate.associate_by_email',
-    # Пытается собрать правильный username, на основе уже имеющихся данных
-    'social_auth.backends.pipeline.user.get_username',
-    # Создает нового пользователя, если такого еще нет
-    'social_auth.backends.pipeline.user.create_user',
-    # Пытается связать аккаунты
-    'social_auth.backends.pipeline.social.associate_user',
-    # Получает и обновляет social_user.extra_data
-    'social_auth.backends.pipeline.social.load_extra_data',
-    # Обновляет инстанс user дополнительными данными с бекенда
-    'social_auth.backends.pipeline.user.update_user_details'
-)
-
-SOCIAL_AUTH_PROVIDERS = [
-    {'id': p[0], 'name': p[1], 'position': {'width': p[2][0], 'height': p[2][1], }}
-    for p in (
-        ('github', u'Login via GitHub', (0, -70)),
-        ('facebook', u'Login via Facebook', (0, 0)),
-        ('twitter', u'Login via Twitter', (0, -35)),
-    )
-]
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# )
