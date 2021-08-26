@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load social_auth_widget %}
 {% block content %}
 
 <style>
@@ -51,6 +52,9 @@
             <label>
             <input type="checkbox" value="remember-me">&nbsp;Запомнить
             </label>
+
+            {% social_auth_widget %}
+
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" value="Войти">Вход</button>
         </form>

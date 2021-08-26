@@ -21,10 +21,6 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 
 
-# urlpatterns = [
-#     url(r'^admin/', admin.site.urls),
-# ]
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('musicshop.urls')),

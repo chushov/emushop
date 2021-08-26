@@ -138,7 +138,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-import random
 # Если имя не удалось получить, то можно его сгенерировать
 SOCIAL_AUTH_DEFAULT_USERNAME = lambda: random.choice(['Darth_Vader', 'Obi-Wan_Kenobi', 'R2-D2', 'C-3PO', 'Yoda'])
 # Разрешаем создавать пользователей через social_auth
@@ -162,3 +161,12 @@ SOCIAL_AUTH_PIPELINE = (
     # Обновляет инстанс user дополнительными данными с бекенда
     'social_auth.backends.pipeline.user.update_user_details'
 )
+
+SOCIAL_AUTH_PROVIDERS = [
+    {'id': p[0], 'name': p[1], 'position': {'width': p[2][0], 'height': p[2][1], }}
+    for p in (
+        ('github', u'Login via GitHub', (0, -70)),
+        ('facebook', u'Login via Facebook', (0, 0)),
+        ('twitter', u'Login via Twitter', (0, -35)),
+    )
+]
